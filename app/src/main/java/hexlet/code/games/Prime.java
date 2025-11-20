@@ -13,7 +13,7 @@ public class Prime {
 
         for (int i = 0; i < 3; i++) {
             var number = random.nextInt(100) + 1;
-            var question = "Question %s\nYour answer: ".formatted(number);
+            var question = "Question: %s\nYour answer: ".formatted(number);
             var isPrime = isPrime(number) ? "yes" : "no";
 
             arrayEntries[i] = new QuizEntryString(question, isPrime);

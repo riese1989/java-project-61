@@ -15,7 +15,7 @@ public class Gcd {
             var firstNumber = random.nextInt(100) + 1;
             var secondNumber = random.nextInt(100) + 1;
             var gcdNumber = gcd(firstNumber, secondNumber);
-            var question = "Question %s %s \nYour answer: "
+            var question = "Question: %s %s \nYour answer: "
                     .formatted(firstNumber, secondNumber);
             
             arrayEntries[i] = new QuizEntryInteger(question, gcdNumber);

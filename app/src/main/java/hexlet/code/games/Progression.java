@@ -26,7 +26,7 @@ public class Progression {
                 }
             }
 
-            var question = "Question %s\nYour answer: ".formatted(stringProgression);
+            var question = "Question: %s\nYour answer: ".formatted(stringProgression);
             
             quizEntries[i] = new QuizEntryInteger(question, Integer.parseInt(progression[missedIndex]));
         }
