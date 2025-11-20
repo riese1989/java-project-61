@@ -8,6 +8,7 @@ import java.util.Random;
 public class Prime {
     private static final int QUIZ_ENTRIES_COUNT = 3;
     private static final int MAX_RANDOM_NUMBER  = 100;
+    private static final int FIRST_ODD_PRIME_CHECK = 3;
 
     public static void play() {
         var random = new Random();
@@ -36,7 +37,7 @@ public class Prime {
             return false;
         }
 
-        for (int i = 3; i * i <= number; i += 2) {
+        for (int i = FIRST_ODD_PRIME_CHECK; i * i <= number; i += 2) {
             if (number % i == 0) {
                 return false;
             }
