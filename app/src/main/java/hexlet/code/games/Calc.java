@@ -7,44 +7,36 @@ import java.util.List;
 import java.util.Random;
 
 public class Calc {
-    private static final int QUIZ_ENTRIES_COUNT = 3;
-    private static final int MAX_RANDOM_INDEX  = 2;
-    private static final int MAX_RANDOM_NUMBER  = 100;
-
     public static void play() {
+        final var quizEntriesCount = 3;
+        final var maxRandomIndex = 2;
+        final var maxRandomNumber = 100;
         var random = new Random();
         var signList = List.of('-', '+', '*');
-        var engine = new Engine("What is the result of the expression?");
-        var quizEntries = new QuizEntryInteger[QUIZ_ENTRIES_COUNT];
+        var quizEntries = new QuizEntryInteger[quizEntriesCount];
 
-        for (int i = 0; i < QUIZ_ENTRIES_COUNT; i++) {
-            int firstNumber = random.nextInt(MAX_RANDOM_NUMBER) + 1;
-            int secondNumber = random.nextInt(MAX_RANDOM_NUMBER) + 1;
-            var index = random.nextInt(MAX_RANDOM_INDEX) + 1;
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            int firstNumber = random.nextInt(maxRandomNumber) + 1;
+            int secondNumber = random.nextInt(maxRandomNumber) + 1;
+            var index = random.nextInt(maxRandomIndex) + 1;
             var sign = signList.get(index);
-            var question = "Question: %s %s %s\nYour answer: "
-                    .formatted(firstNumber, sign, secondNumber);
+            var expression = firstNumber + " " + sign + " " + secondNumber;
             var expectedValue = calculate(sign, firstNumber, secondNumber);
 
-            quizEntries[i] = new QuizEntryInteger(question, expectedValue);
+            quizEntries[i] = new QuizEntryInteger(expression, expectedValue);
         }
 
-        engine.check(quizEntries);
+        var engine = new Engine("What is the result of the expression?", quizEntries);
+
+        engine.checkInteger();
     }
 
     private static int calculate(Character sign, int firstNumber, int secondNumber) {
-        if (sign.equals('-')) {
-            return firstNumber - secondNumber;
-        }
-
-        if (sign.equals('+')) {
-            return firstNumber + secondNumber;
-        }
-
-        if (sign.equals('*')) {
-            return firstNumber * secondNumber;
-        }
-
-        return 0;
+        return  switch (sign) {
+            case '-' -> firstNumber - secondNumber;
+            case '+' -> firstNumber + secondNumber;
+            case '*' -> firstNumber * secondNumber;
+            default -> 0;
+        };
     }
 }

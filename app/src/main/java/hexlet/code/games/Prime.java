@@ -6,27 +6,27 @@ import hexlet.code.entities.QuizEntryString;
 import java.util.Random;
 
 public class Prime {
-    private static final int QUIZ_ENTRIES_COUNT = 3;
-    private static final int MAX_RANDOM_NUMBER  = 100;
-    private static final int FIRST_ODD_PRIME_CHECK = 3;
-
     public static void play() {
+        final var quizEntriesCount = 3;
+        final var maxRandomNumber = 100;
         var random = new Random();
-        var engine = new Engine("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        var arrayEntries = new QuizEntryString[QUIZ_ENTRIES_COUNT];
+        var arrayEntries = new QuizEntryString[quizEntriesCount];
 
-        for (int i = 0; i < QUIZ_ENTRIES_COUNT; i++) {
-            var number = random.nextInt(MAX_RANDOM_NUMBER) + 1;
-            var question = "Question: %s\nYour answer: ".formatted(number);
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            var number = random.nextInt(maxRandomNumber) + 1;
             var isPrime = isPrime(number) ? "yes" : "no";
 
-            arrayEntries[i] = new QuizEntryString(question, isPrime);
+            arrayEntries[i] = new QuizEntryString(String.valueOf(number), isPrime);
         }
 
-        engine.check(arrayEntries);
+        var engine = new Engine("Answer 'yes' if given number is prime. Otherwise answer 'no'.", arrayEntries);
+
+        engine.checkString();
     }
 
     private static boolean isPrime(int number) {
+        final int firstOddPrimeCheck = 3;
+
         if (number <= 1) {
             return false;
         }
@@ -37,7 +37,7 @@ public class Prime {
             return false;
         }
 
-        for (int i = FIRST_ODD_PRIME_CHECK; i * i <= number; i += 2) {
+        for (int i = firstOddPrimeCheck; i * i <= number; i += 2) {
             if (number % i == 0) {
                 return false;
             }

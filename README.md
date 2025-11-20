@@ -5,6 +5,7 @@
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=hexlet-boilerplates_java-package&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=hexlet-boilerplates_java-package)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=hexlet-boilerplates_java-package&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=hexlet-boilerplates_java-package)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=hexlet-boilerplates_java-package&metric=coverage)](https://sonarcloud.io/summary/new_code?id=hexlet-boilerplates_java-package)
+[![Actions Status](https://github.com/riese1989/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/riese1989/java-project-61/actions)
 
 A project template with only the bare minimum of structure. A good starting point for a small project.
 

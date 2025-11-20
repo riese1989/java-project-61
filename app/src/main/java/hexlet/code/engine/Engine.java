@@ -7,18 +7,31 @@ import hexlet.code.games.Cli;
 import java.util.Scanner;
 
 public final class Engine {
-    private final String name;
-    private final Scanner scanner;
+    private final String name = Cli.greed();;
+    private final Scanner scanner = new Scanner(System.in);
+    public static final int ROUNDS = 3;
+    private static final String MASK_QUESTION = """
+            Question: %s
+            Your answer:\s
+            """;
+    private QuizEntryInteger[] arrayQuizEntryInteger;
+    private QuizEntryString[] arrayQuizEntryString;
 
-    public Engine(String msg) {
-        scanner = new Scanner(System.in);
-        name = Cli.greed();
+    public Engine(String msg, QuizEntryInteger[] arrayQuizEntryInteger) {
         System.out.println(msg);
+
+        this.arrayQuizEntryInteger = arrayQuizEntryInteger;
     }
 
-    public void check(QuizEntryInteger[] array) {
-        for (var entity : array) {
-            System.out.print(entity.question());
+    public Engine(String msg, QuizEntryString[] arrayQuizEntryString) {
+        System.out.println(msg);
+
+        this.arrayQuizEntryString = arrayQuizEntryString;
+    }
+
+    public void checkInteger() {
+        for (var entity : arrayQuizEntryInteger) {
+            System.out.printf(MASK_QUESTION, entity.expression());
 
             var answer = scanner.nextInt();
 
@@ -38,9 +51,9 @@ public final class Engine {
         System.out.printf("Congratulations, %s!", name);
     }
 
-    public void check(QuizEntryString[] array) {
-        for (var entity : array) {
-            System.out.print(entity.question());
+    public void checkString() {
+        for (var entity : arrayQuizEntryString) {
+            System.out.printf(MASK_QUESTION, entity.expression());
 
             var answer = scanner.nextLine().toLowerCase();
 

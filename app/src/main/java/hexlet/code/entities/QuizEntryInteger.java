@@ -1,4 +1,4 @@
 package hexlet.code.entities;
 
-public record QuizEntryInteger(String question, int expAnswer) {
+public record QuizEntryInteger(String expression, int expAnswer) {
 }

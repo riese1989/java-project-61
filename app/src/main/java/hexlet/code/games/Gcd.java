@@ -6,25 +6,24 @@ import hexlet.code.entities.QuizEntryInteger;
 import java.util.Random;
 
 public class Gcd {
-    private static final int QUIZ_ENTRIES_COUNT = 3;
-    private static final int MAX_RANDOM_NUMBER  = 100;
-
     public static void play() {
+        final var quizEntriesCount = 3;
+        final var maxRandomIndex = 2;
         var random = new Random();
-        var engine = new Engine("Find the greatest common divisor of given numbers.");
-        var arrayEntries = new QuizEntryInteger[QUIZ_ENTRIES_COUNT];
+        var arrayEntries = new QuizEntryInteger[quizEntriesCount];
 
-        for (int i = 0; i < QUIZ_ENTRIES_COUNT; i++) {
-            var firstNumber = random.nextInt(MAX_RANDOM_NUMBER) + 1;
-            var secondNumber = random.nextInt(MAX_RANDOM_NUMBER) + 1;
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            var firstNumber = random.nextInt(maxRandomIndex) + 1;
+            var secondNumber = random.nextInt(maxRandomIndex) + 1;
             var gcdNumber = gcd(firstNumber, secondNumber);
-            var question = "Question: %s %s \nYour answer: "
-                    .formatted(firstNumber, secondNumber);
+            var expression = firstNumber + " " + secondNumber;
 
-            arrayEntries[i] = new QuizEntryInteger(question, gcdNumber);
+            arrayEntries[i] = new QuizEntryInteger(expression, gcdNumber);
         }
 
-        engine.check(arrayEntries);
+        var engine = new Engine("Find the greatest common divisor of given numbers.", arrayEntries);
+
+        engine.checkInteger();
     }
 
     private static int gcd(int a, int b) {

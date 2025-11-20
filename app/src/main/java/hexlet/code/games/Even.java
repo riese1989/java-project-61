@@ -6,22 +6,20 @@ import hexlet.code.entities.QuizEntryString;
 import java.util.Random;
 
 public class Even {
-    private static final int QUIZ_ENTRIES_COUNT = 3;
-    private static final int MAX_RANDOM_NUMBER  = 100;
-
     public static void play() {
-        var engine = new Engine("Answer 'yes' if the number is even, otherwise answer 'no'.");
+        final var quizEntriesCount = 3;
+        final var maxRandomIndex = 2;
         var random = new Random();
-        var arrayEntries = new QuizEntryString[QUIZ_ENTRIES_COUNT];
+        var arrayEntries = new QuizEntryString[quizEntriesCount];
 
-        for (int i = 0; i < QUIZ_ENTRIES_COUNT; i++) {
-            var number = random.nextInt(MAX_RANDOM_NUMBER) + 1;
-            var question = "Question: %s\nYour answer: ".formatted(number);
+        for (int i = 0; i < Engine.ROUNDS; i++) {
+            var number = random.nextInt(maxRandomIndex) + 1;
             var expAnswer = number % 2 == 0 ? "yes" : "no";
 
-            arrayEntries[i] = new QuizEntryString(question, expAnswer);
+            arrayEntries[i] = new QuizEntryString(String.valueOf(number), expAnswer);
         }
 
-        engine.check(arrayEntries);
+        var engine = new Engine("Answer 'yes' if the number is even, otherwise answer 'no'.", arrayEntries);
+        engine.checkString();
     }
 }

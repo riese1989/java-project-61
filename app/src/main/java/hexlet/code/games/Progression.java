@@ -6,19 +6,18 @@ import hexlet.code.entities.QuizEntryInteger;
 import java.util.Random;
 
 public class Progression {
-    private static final int QUIZ_ENTRIES_COUNT = 3;
-    private static final int MAX_RANDOM_NUMBER  = 100;
     private static final int PROGRESSION_SIZE = 5;
 
     public static void play() {
+        final var quizEntriesCount = 3;
+        final var maxRandomNumber = 100;
         var random = new Random();
-        var engine = new Engine("What number is missing in the progression?");
-        var quizEntries = new QuizEntryInteger[QUIZ_ENTRIES_COUNT];
+        var quizEntries = new QuizEntryInteger[quizEntriesCount];
 
-        for (int i = 0; i < QUIZ_ENTRIES_COUNT; i++) {
+        for (int i = 0; i < Engine.ROUNDS; i++) {
             var missedIndex = random.nextInt(PROGRESSION_SIZE);
-            var interval = random.nextInt(MAX_RANDOM_NUMBER) + 1;
-            var startValue = random.nextInt(MAX_RANDOM_NUMBER) + 1;
+            var interval = random.nextInt(maxRandomNumber) + 1;
+            var startValue = random.nextInt(maxRandomNumber) + 1;
             var progression = createProgression(startValue, interval);
             var stringProgression = new StringBuilder();
 
@@ -30,12 +29,12 @@ public class Progression {
                 }
             }
 
-            var question = "Question: %s\nYour answer: ".formatted(stringProgression);
-
-            quizEntries[i] = new QuizEntryInteger(question, Integer.parseInt(progression[missedIndex]));
+            quizEntries[i] = new QuizEntryInteger(stringProgression.toString(), Integer.parseInt(progression[missedIndex]));
         }
 
-        engine.check(quizEntries);
+        var engine = new Engine("What number is missing in the progression?", quizEntries);
+
+        engine.checkInteger();
     }
 
 
