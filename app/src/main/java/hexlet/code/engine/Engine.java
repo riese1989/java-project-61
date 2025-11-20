@@ -6,7 +6,7 @@ import hexlet.code.games.Cli;
 
 import java.util.Scanner;
 
-public class Engine {
+public final class Engine {
     private final String name;
     private final Scanner scanner;
 

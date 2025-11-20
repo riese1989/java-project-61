@@ -6,13 +6,16 @@ import hexlet.code.entities.QuizEntryString;
 import java.util.Random;
 
 public class Prime {
+    private static final int QUIZ_ENTRIES_COUNT = 3;
+    private static final int MAX_RANDOM_NUMBER  = 100;
+
     public static void play() {
         var random = new Random();
         var engine = new Engine("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        var arrayEntries = new QuizEntryString[3];
+        var arrayEntries = new QuizEntryString[QUIZ_ENTRIES_COUNT];
 
         for (int i = 0; i < 3; i++) {
-            var number = random.nextInt(100) + 1;
+            var number = random.nextInt(MAX_RANDOM_NUMBER) + 1;
             var question = "Question: %s\nYour answer: ".formatted(number);
             var isPrime = isPrime(number) ? "yes" : "no";
 

@@ -6,15 +6,18 @@ import hexlet.code.entities.QuizEntryInteger;
 import java.util.Random;
 
 public class Progression {
+    private static final int QUIZ_ENTRIES_COUNT = 3;
+    private static final int MAX_RANDOM_NUMBER  = 100;
+
     public static void play() {
         var random = new Random();
         var engine = new Engine("What number is missing in the progression?");
-        var quizEntries = new QuizEntryInteger[3];
+        var quizEntries = new QuizEntryInteger[QUIZ_ENTRIES_COUNT];
 
         for (int i = 0; i < 3; i++) {
             var missedIndex = random.nextInt(5);
-            var interval = random.nextInt(100) + 1;
-            var startValue = random.nextInt(100) + 1;
+            var interval = random.nextInt(MAX_RANDOM_NUMBER) + 1;
+            var startValue = random.nextInt(MAX_RANDOM_NUMBER) + 1;
             var progression = createProgression(startValue, interval);
             var stringProgression = new StringBuilder();
 
