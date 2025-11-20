@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.engine.Engine;
-import hexlet.code.entities.QuizEntryBoolean;
+import hexlet.code.entities.QuizEntryString;
 
 import java.util.Random;
 
@@ -9,14 +9,14 @@ public class Prime {
     public static void play() {
         var random = new Random();
         var engine = new Engine("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-        var arrayEntries = new QuizEntryBoolean[3];
+        var arrayEntries = new QuizEntryString[3];
 
         for (int i = 0; i < 3; i++) {
             var number = random.nextInt(100) + 1;
             var question = "Question %s\nYour answer: ".formatted(number);
-            var isPrime = isPrime(number);
+            var isPrime = isPrime(number) ? "yes" : "no";
 
-            arrayEntries[i] = new QuizEntryBoolean(question, isPrime);
+            arrayEntries[i] = new QuizEntryString(question, isPrime);
         }
 
         engine.check(arrayEntries);

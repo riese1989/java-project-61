@@ -1,6 +1,6 @@
 package hexlet.code.engine;
 
-import hexlet.code.entities.QuizEntryBoolean;
+import hexlet.code.entities.QuizEntryString;
 import hexlet.code.entities.QuizEntryInteger;
 import hexlet.code.games.Cli;
 
@@ -38,17 +38,17 @@ public class Engine {
         System.out.printf("Congratulations, %s!", name);
     }
 
-    public void check(QuizEntryBoolean[] array) {
+    public void check(QuizEntryString[] array) {
         for (var entity : array) {
             System.out.print(entity.question());
 
-            var answer = scanner.nextLine();
+            var answer = scanner.nextLine().toLowerCase();
 
-            if (entity.expAnswer() != Boolean.parseBoolean(answer)) {
+            if (!answer.equalsIgnoreCase(entity.expAnswer())) {
                 System.out.printf("""
                         '%s' is wrong answer ;(. Correct answer was '%s'.
                         Let's try again, %s!
-                        """, answer, entity.expAnswer() ? "yes" : "no", name);
+                        """, answer, entity.expAnswer(), name);
 
                 return;
             }
