@@ -14,7 +14,7 @@ public class Even {
         var random = new Random();
         var arrayEntries = new QuizEntryString[QUIZ_ENTRIES_COUNT];
 
-        for(int i = 0; i < 3; i++) {
+        for (int i = 0; i < QUIZ_ENTRIES_COUNT; i++) {
             var number = random.nextInt(MAX_RANDOM_NUMBER) + 1;
             var question = "Question: %s\nYour answer: ".formatted(number);
             var expAnswer = number % 2 == 0 ? "yes" : "no";

@@ -15,7 +15,7 @@ public final class Engine {
         name = Cli.greed();
         System.out.println(msg);
     }
-    
+
     public void check(QuizEntryInteger[] array) {
         for (var entity : array) {
             System.out.print(entity.question());

@@ -17,7 +17,7 @@ public class Calc {
         var engine = new Engine("What is the result of the expression?");
         var quizEntries = new QuizEntryInteger[QUIZ_ENTRIES_COUNT];
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < QUIZ_ENTRIES_COUNT; i++) {
             int firstNumber = random.nextInt(MAX_RANDOM_NUMBER) + 1;
             int secondNumber = random.nextInt(MAX_RANDOM_NUMBER) + 1;
             var index = random.nextInt(MAX_RANDOM_INDEX) + 1;

@@ -14,7 +14,7 @@ public class Prime {
         var engine = new Engine("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
         var arrayEntries = new QuizEntryString[QUIZ_ENTRIES_COUNT];
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < QUIZ_ENTRIES_COUNT; i++) {
             var number = random.nextInt(MAX_RANDOM_NUMBER) + 1;
             var question = "Question: %s\nYour answer: ".formatted(number);
             var isPrime = isPrime(number) ? "yes" : "no";
