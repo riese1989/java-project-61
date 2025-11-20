@@ -48,7 +48,7 @@ public class Engine {
                 System.out.printf("""
                         '%s' is wrong answer ;(. Correct answer was '%s'.
                         Let's try again, %s!
-                        """, answer, entity.expAnswer(), name);
+                        """, answer, entity.expAnswer() ? "yes" : "no", name);
 
                 return;
             }
