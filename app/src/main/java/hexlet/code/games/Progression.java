@@ -29,7 +29,8 @@ public class Progression {
                 }
             }
 
-            quizEntries[i] = new QuizEntryInteger(stringProgression.toString(), Integer.parseInt(progression[missedIndex]));
+            quizEntries[i] = new QuizEntryInteger(stringProgression.toString(),
+                    Integer.parseInt(progression[missedIndex]));
         }
 
         var engine = new Engine("What number is missing in the progression?", quizEntries);

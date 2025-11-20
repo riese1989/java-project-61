@@ -17,16 +17,16 @@ public final class Engine {
     private QuizEntryInteger[] arrayQuizEntryInteger;
     private QuizEntryString[] arrayQuizEntryString;
 
-    public Engine(String msg, QuizEntryInteger[] arrayQuizEntryInteger) {
+    public Engine(String msg, QuizEntryInteger[] entries) {
         System.out.println(msg);
 
-        this.arrayQuizEntryInteger = arrayQuizEntryInteger;
+        this.arrayQuizEntryInteger = entries;
     }
 
-    public Engine(String msg, QuizEntryString[] arrayQuizEntryString) {
+    public Engine(String msg, QuizEntryString[] entries) {
         System.out.println(msg);
 
-        this.arrayQuizEntryString = arrayQuizEntryString;
+        this.arrayQuizEntryString = entries;
     }
 
     public void checkInteger() {
