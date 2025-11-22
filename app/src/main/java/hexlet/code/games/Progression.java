@@ -10,7 +10,7 @@ public class Progression {
         final var maxRandomNumber = 100;
         var random = new Random();
         var quizEntries = new QuizEntry[Engine.ROUNDS];
-        var progressionSize = 5;
+        final var progressionSize = 5;
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
             var missedIndex = random.nextInt(progressionSize);
