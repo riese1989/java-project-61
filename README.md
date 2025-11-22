@@ -1,7 +1,7 @@
 # java-package
 
 [![Actions Status](https://github.com/riese1989/java-project-61/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/riese1989/java-project-61/actions)
-[![Maintainability](https://api.codeclimate.com/v1/badges/bc953fb0ab378995dab3/maintainability)](https://codeclimate.com/github/hexlet-boilerplates/java-package-61/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bc953fb0ab378995dab3/maintainability)](https://github.com/riese1989/java-project-61/actions)
 
 A project template with only the bare minimum of structure. A good starting point for a small project.
 
