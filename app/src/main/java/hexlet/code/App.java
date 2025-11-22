@@ -45,7 +45,7 @@ public class App {
             case PROGRESSION -> Progression.play();
             case PRIME -> Prime.play();
             default ->
-                    throw new IllegalStateException("Unexpected value: " + choice);
+                    throw new RuntimeException("Incorrect input %d for choice game".formatted(choice));
         }
     }
 }

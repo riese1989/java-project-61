@@ -1,19 +1,18 @@
 package hexlet.code.games;
 
 import hexlet.code.engine.Engine;
-import hexlet.code.entities.QuizEntryInteger;
+import hexlet.code.entities.QuizEntry;
 
 import java.util.List;
 import java.util.Random;
 
 public class Calc {
     public static void play() {
-        final var quizEntriesCount = 3;
         final var maxRandomIndex = 2;
         final var maxRandomNumber = 100;
         var random = new Random();
         var signList = List.of('-', '+', '*');
-        var quizEntries = new QuizEntryInteger[quizEntriesCount];
+        var quizEntries = new QuizEntry[Engine.ROUNDS];
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
             int firstNumber = random.nextInt(maxRandomNumber) + 1;
@@ -23,12 +22,12 @@ public class Calc {
             var expression = firstNumber + " " + sign + " " + secondNumber;
             var expectedValue = calculate(sign, firstNumber, secondNumber);
 
-            quizEntries[i] = new QuizEntryInteger(expression, expectedValue);
+            quizEntries[i] = new QuizEntry(expression, String.valueOf(expectedValue));
         }
 
         var engine = new Engine("What is the result of the expression?", quizEntries);
 
-        engine.checkInteger();
+        engine.check();
     }
 
     private static int calculate(Character sign, int firstNumber, int secondNumber) {
@@ -36,7 +35,8 @@ public class Calc {
             case '-' -> firstNumber - secondNumber;
             case '+' -> firstNumber + secondNumber;
             case '*' -> firstNumber * secondNumber;
-            default -> 0;
+            default ->
+                    throw new RuntimeException("Incorrect sign '%s' for calculation".formatted(sign));
         };
     }
 }

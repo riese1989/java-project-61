@@ -1,7 +1,6 @@
 package hexlet.code.engine;
 
-import hexlet.code.entities.QuizEntryString;
-import hexlet.code.entities.QuizEntryInteger;
+import hexlet.code.entities.QuizEntry;
 import hexlet.code.games.Cli;
 
 import java.util.Scanner;
@@ -14,45 +13,16 @@ public final class Engine {
             Question: %s
             Your answer:\s
             """;
-    private QuizEntryInteger[] arrayQuizEntryInteger;
-    private QuizEntryString[] arrayQuizEntryString;
+    private final QuizEntry[] arrayQuizEntry;
 
-    public Engine(String msg, QuizEntryInteger[] entries) {
+    public Engine(String msg, QuizEntry[] entries) {
         System.out.println(msg);
 
-        this.arrayQuizEntryInteger = entries;
+        this.arrayQuizEntry = entries;
     }
 
-    public Engine(String msg, QuizEntryString[] entries) {
-        System.out.println(msg);
-
-        this.arrayQuizEntryString = entries;
-    }
-
-    public void checkInteger() {
-        for (var entity : arrayQuizEntryInteger) {
-            System.out.printf(MASK_QUESTION, entity.expression());
-
-            var answer = scanner.nextInt();
-
-            if (answer != entity.expAnswer()) {
-                System.out.printf("""
-                        '%s' is wrong answer ;(. Correct answer was '%s'.
-                        Let's try again, %s!
-                        """, answer, entity.expAnswer(), name);
-
-                return;
-            }
-
-            System.out.println("Correct!");
-
-        }
-
-        System.out.printf("Congratulations, %s!", name);
-    }
-
-    public void checkString() {
-        for (var entity : arrayQuizEntryString) {
+    public void check() {
+        for (var entity : arrayQuizEntry) {
             System.out.printf(MASK_QUESTION, entity.expression());
 
             var answer = scanner.nextLine().toLowerCase();

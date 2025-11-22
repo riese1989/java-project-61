@@ -1,48 +1,40 @@
 package hexlet.code.games;
 
 import hexlet.code.engine.Engine;
-import hexlet.code.entities.QuizEntryInteger;
+import hexlet.code.entities.QuizEntry;
 
 import java.util.Random;
 
 public class Progression {
-    private static final int PROGRESSION_SIZE = 5;
-
     public static void play() {
-        final var quizEntriesCount = 3;
         final var maxRandomNumber = 100;
         var random = new Random();
-        var quizEntries = new QuizEntryInteger[quizEntriesCount];
+        var quizEntries = new QuizEntry[Engine.ROUNDS];
+        var progressionSize = 5;
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
-            var missedIndex = random.nextInt(PROGRESSION_SIZE);
+            var missedIndex = random.nextInt(progressionSize);
             var interval = random.nextInt(maxRandomNumber) + 1;
             var startValue = random.nextInt(maxRandomNumber) + 1;
-            var progression = createProgression(startValue, interval);
-            var stringProgression = new StringBuilder();
+            var progression = createProgression(startValue, interval, progressionSize);
 
-            for (int j = 0; j < PROGRESSION_SIZE; j++) {
-                if (j != missedIndex) {
-                    stringProgression.append(progression[j]).append(" ");
-                } else {
-                    stringProgression.append(".. ");
-                }
-            }
+            var answer = progression[missedIndex];
 
-            quizEntries[i] = new QuizEntryInteger(stringProgression.toString(),
-                    Integer.parseInt(progression[missedIndex]));
+            progression[missedIndex] = "..";
+
+            quizEntries[i] = new QuizEntry(String.join(" ", progression), answer);
         }
 
         var engine = new Engine("What number is missing in the progression?", quizEntries);
 
-        engine.checkInteger();
+        engine.check();
     }
 
 
-    private static String[] createProgression(int startValue, int interval) {
-        var progression = new String[PROGRESSION_SIZE];
+    private static String[] createProgression(int startValue, int interval, int progressionSize) {
+        var progression = new String[progressionSize];
 
-        for (int i = 0; i < PROGRESSION_SIZE; i++) {
+        for (int i = 0; i < progressionSize; i++) {
             progression[i] = String.valueOf(startValue + i * interval);
         }
 

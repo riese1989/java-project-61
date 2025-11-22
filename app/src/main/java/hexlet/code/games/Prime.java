@@ -1,27 +1,27 @@
 package hexlet.code.games;
 
 import hexlet.code.engine.Engine;
-import hexlet.code.entities.QuizEntryString;
+import hexlet.code.entities.QuizEntry;
 
 import java.util.Random;
 
 public class Prime {
     public static void play() {
-        final var quizEntriesCount = 3;
+        final var quizEntriesCount = Engine.ROUNDS;
         final var maxRandomNumber = 100;
         var random = new Random();
-        var arrayEntries = new QuizEntryString[quizEntriesCount];
+        var arrayEntries = new QuizEntry[quizEntriesCount];
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
             var number = random.nextInt(maxRandomNumber) + 1;
             var isPrime = isPrime(number) ? "yes" : "no";
 
-            arrayEntries[i] = new QuizEntryString(String.valueOf(number), isPrime);
+            arrayEntries[i] = new QuizEntry(String.valueOf(number), isPrime);
         }
 
         var engine = new Engine("Answer 'yes' if given number is prime. Otherwise answer 'no'.", arrayEntries);
 
-        engine.checkString();
+        engine.check();
     }
 
     private static boolean isPrime(int number) {
