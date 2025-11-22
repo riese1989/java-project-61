@@ -7,10 +7,9 @@ import java.util.Random;
 
 public class Prime {
     public static void play() {
-        final var quizEntriesCount = Engine.ROUNDS;
         final var maxRandomNumber = 100;
         var random = new Random();
-        var arrayEntries = new QuizEntry[quizEntriesCount];
+        var arrayEntries = new QuizEntry[Engine.ROUNDS];
 
         for (int i = 0; i < Engine.ROUNDS; i++) {
             var number = random.nextInt(maxRandomNumber) + 1;
